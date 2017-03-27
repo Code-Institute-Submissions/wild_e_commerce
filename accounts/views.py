@@ -3,6 +3,20 @@ from accounts.forms import UserLoginForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template.context_processors import csrf
+from index.views import get_index
+from django.contrib.auth.decorators import login_required
+
+
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'You have successfully logged out')
+    return redirect(reverse(get_index))
+
+
+@login_required(login_url='/accounts/login')
+def profile(request):
+    return render(request, 'profile.html')
+
 
 def login(request):
     if request.method == 'POST':
@@ -29,5 +43,3 @@ def login(request):
     args = {'form': form, 'next': request.GET['next'] if request.GET and 'next' in request.GET else ''}
     args.update(csrf(request))
     return render(request, 'login.html', args)
-
-
