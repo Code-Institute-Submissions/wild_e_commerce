@@ -1,5 +1,5 @@
 from django.contrib import messages, auth
-from accounts.forms import UserLoginForm
+from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template.context_processors import csrf
@@ -43,3 +43,29 @@ def login(request):
     args = {'form': form, 'next': request.GET['next'] if request.GET and 'next' in request.GET else ''}
     args.update(csrf(request))
     return render(request, 'login.html', args)
+
+# register function
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            user = auth.authenticate(username=request.POST.get('username'),
+                                     password=request.POST.get('password1'))
+
+            if user:
+                auth.login(request, user)
+                messages.success(request, "You have successfully registered")
+                return redirect(reverse('profile'))
+
+            else:
+                messages.error(request, "unable to log you in at this time!")
+
+    else:
+        form = UserRegistrationForm()
+
+    args = {'form': form}
+    args.update(csrf(request))
+
+    return render(request, 'register.html', args)

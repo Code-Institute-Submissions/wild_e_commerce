@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'index',
     'django_forms_bootstrap',
     'django_gravatar',
+
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')

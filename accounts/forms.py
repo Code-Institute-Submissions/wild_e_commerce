@@ -10,22 +10,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(UserCreationForm):
-    MONTH_ABBREVIATIONS = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
-        'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
-    ]
-    MONTH_CHOICES = list(enumerate(MONTH_ABBREVIATIONS, 1))
-    YEAR_CHOICES = [(i, i) for i in xrange(2015, 2036)]
-
-    credit_card_number = forms.CharField(label='Credit card number')
-    cvv = forms.CharField(label='Security code (CVV)')
-    expiry_month = forms.ChoiceField(label="Month", choices=MONTH_CHOICES)
-    expiry_year = forms.ChoiceField(label="Year", choices=YEAR_CHOICES)
-    stripe_id = forms.CharField(widget=forms.HiddenInput)
-    password1 = forms.CharField(
-        label='Password',
-        widget=forms.PasswordInput
-    )
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     password2 = forms.CharField(
         label='Password Confirmation',
@@ -34,13 +19,11 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'stripe_id']
-        exclude = ['username']
+        fields = ['username', 'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
-
         if email and User.objects.filter(email=email).exclude(username=username).count():
             raise forms.ValidationError(u'Email addresses must be unique.')
         return email
