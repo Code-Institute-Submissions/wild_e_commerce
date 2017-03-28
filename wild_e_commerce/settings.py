@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'index',
     'django_forms_bootstrap',
     'django_gravatar',
+    'products',
 
 ]
 
@@ -134,3 +135,5 @@ STATIC_URL = '/static/'
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
