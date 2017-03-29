@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from .views import user_cart, add_to_cart, remove_from_cart
 #from django.views import static
-#from wild_e_commerce.settings import STATIC_ROOT
+
 
 urlpatterns = [
     url(r'^$', user_cart, name='cart'),

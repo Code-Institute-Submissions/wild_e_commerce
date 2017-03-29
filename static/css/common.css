@@ -1,0 +1,60 @@
+*
+{
+	-ms-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+.no-margin
+{
+	margin: 0;
+}
+
+.no-padding
+{
+	padding: 0;
+}
+
+.LogoDiv
+{
+	height:200px;
+	background-color: black;
+	padding:0px;
+}
+
+.LogoLeft
+{
+	height: 200px;
+	padding:0px;
+
+}
+
+ .LogoLeft img
+{
+	max-width: 100%;
+	min-height: 200px;
+}
+
+.LogoMiddle
+{
+	padding: 0px;
+}
+
+.LogoMiddle img
+{
+	margin:0 auto;
+	display: block;
+	max-width: 100%;
+	min-height: 200px;
+}
+.LogoRight
+{
+	padding: 0px;
+	background-color: black;
+}
+.LogoRight img
+{
+	float: right;
+	max-width: 100%;
+
+}

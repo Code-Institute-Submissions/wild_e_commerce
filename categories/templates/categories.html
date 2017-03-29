@@ -1,5 +1,20 @@
-{% extends "oldbase.html" %}
+{% extends 'oldbase.html' %}
+
+{% block sidebar %}
+    {% for category in categories %}
+        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+{% endblock sidebar %}
+
+
 {% block content %}
+    <ul>
+        {% for subcategory in subcategories %}
+        <li><a href="{% url 'category' subcategory.id %}">{{ subcategory.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -20,7 +35,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.price }}</td>
-                <td><a href="{% url 'buy_now_stripe' product.id %}">Buy Now</a></td>
+                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a></td>
                 {#                    <td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>#}
                 <td>
                     <form method="post" action="{% url 'add_to_cart' product.id %}">
@@ -34,4 +49,4 @@
         {% endfor %}
         </tbody>
     </table>
-{% endblock %}
+{% endblock content %}

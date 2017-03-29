@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +44,10 @@ INSTALLED_APPS = [
     'django_gravatar',
     'products',
     'cart',
-    'payments'
+    'payments',
+    'storages',
+    'categories',
+    'brands',
 
 ]
 
@@ -142,26 +146,27 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+
+#AWS_STORAGE_BUCKET_NAME = 'com-wild-total-outdoors'
+#AWS_ACCESS_KEY_ID = 'AKIAIRSIK5WNE3EADG7Q'
+#AWS_SECRET_ACCESS_KEY = '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'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 #STATIC_URL = '/static/'
-STATIC_ROOT = (
-    os.path.join(BASE_DIR, "../static")
-)
+
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static/"),
+    os.path.join(BASE_DIR, "static"),
 )
 
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
