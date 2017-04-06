@@ -30,8 +30,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['mallard-wild-e-commerce.herokuapp.com', u'127.0.0.1']
 
+ALLOWED_HOSTS = ['mallard-wild-e-commerce.herokuapp.com', u'127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'brands',
     'django_bootstrap_breadcrumbs',
     'rest_framework',
+    'boto',
 
 ]
 
@@ -94,15 +96,15 @@ WSGI_APPLICATION = 'wild_e_commerce.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 
-#DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
-DATABASES = {
-	    'default': {
-	        'ENGINE': 'django.db.backends.sqlite3',
-	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-	    }
-	}
+#DATABASES = {
+#	    'default': {
+#	        'ENGINE': 'django.db.backends.sqlite3',
+#	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#	    }
+#	}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
