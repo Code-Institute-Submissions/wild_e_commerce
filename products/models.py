@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from brands.models import Brand
+#from categories.models import Category
+
 
 
 class Product(models.Model):
@@ -14,3 +16,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+

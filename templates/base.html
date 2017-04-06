@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load django_bootstrap_breadcrumbs %}
 {% load gravatar %}
 
 <!DOCTYPE html>
@@ -9,136 +10,139 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css">
+
         <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
-        <link rel="stylesheet" href="{% static "css/shop-homepage.css" %}">
+
+        <link rel="stylesheet" href="{% static "css/categories.css" %}">
         <link rel="stylesheet" href="{% static "css/accounts.css" %}">
         <link rel="stylesheet" href="{% static "css/common.css" %}">
-        <script src="{% static "js/bootstrap.min.js" %}"></script>
         <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css ">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+
+
+
+        <script src="{% static "js/jquery-3.2.0.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/navbar.js" %}"></script>
+        <script src="{% static "js/bannerrotator.js" %}"></script>
+
+
         {% block head_js %}{% endblock %}
     </head>
-    <body>
+    <body >
+        <div class="container">
 
-            <div class="container ">
-                    <div class="row "><!--Header-->
+            <div class="row">
+                    <!-- Fixed masthead -->
+                    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
 
-                        <div class="LogoDiv">
+                        <div class="container">
 
-
-                            <div class = "LogoLeft col-lg-2 col-md-2 col-xs-2"><img src= "{% static "images/header/MyLogo3.png"%}" alt="Wild Total Outdoors Logo"></div>
-                            <div class = "LogoMiddle col-lg-6 col-md-6 col-xs-6"><img id="img" src="{% static "images/header/ShopInterior1.jpg"%}" alt="Wild Total Outdoors Logo"></div>
-                            <div class = "LogoRight col-lg-4 col-md-4 col-xs-4"><img  src="{% static "images/header/DeerLogo.png"%}" alt="Wild Total Outdoors Logo"></div>
-
-
-                        </div>
-                    </div><!--End of Header  -->
-            </div>
-
-
-                <!-- Fixed masthead -->
-            <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-
-
-
-
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                                aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="{% url 'index' %}">Wild Total Outdoors</a>
-                    </div>
-
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                            <li>
-                                <a href="{% url 'products' %}"><i class="fa fa-cube"></i> Categories</a>
-                            </li>
+                           <!--- navbar-header --->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                                        aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                    <a class="navbar-brand" href="{% url 'index' %}">Wild Total Outdoors</a>
+                            </div>
+                            <!--- navbar-header --->
 
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                   aria-expanded="false"><span><img src="{% gravatar_url user.email %}"
-                                                                    style="width:25px; height: 25px; background-color: #12ABB2; color: #ffffff;"
-                                                                    class="img-circle"></span> Account <span
-                                        class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    {% if user.is_authenticated %}
-                                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="{% url 'logout' %}">Log Out</a></li>
-                                    {% else %}
-                                        <li><a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a></li>
-                                        <li><a href="{% url 'register' %}">Register</a></li>
-                                    {% endif %}
+
+                            <!--- navbar collapse --->
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                                    <li>
+                                        <a href="{% url 'categories' %}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cube"></i> Categories<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            {% for category in categories %}
+                                                <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                           aria-expanded="false"><span><img src="{% gravatar_url user.email %}"
+                                                                            style="width:25px; height: 25px; background-color: #12ABB2; color: #ffffff;"
+                                                                            class="img-circle"></span> Account <span
+                                                class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            {% if user.is_authenticated %}
+                                                <li><a href="{% url 'profile' %}">Profile</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                                            {% else %}
+                                                <li><a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a></li>
+                                                <li><a href="{% url 'register' %}">Register</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
                                 </ul>
-                            </li>
-
-                            <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </nav>
-
-        <div id="masthead">
-            <div class="container">
-                <div class="row">
-                    <h1> Wild Total Outdoors
-                        <p id="logo" class="lead">Wild Total Outdoors</p>
-                    </h1>
-                </div>
+                            </div><!--- navbar collapse --->
+                        </div> <!--End of Nav Container -->
+                    </nav><!--End of Nav Bar -->
             </div>
         </div>
 
-        <hr>
-        {% if messages %}
-            <div class="alert alert-success">
-                <div class="messages">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
+        <div class="container">
+            <hr>
+            {% if messages %}
+                <div class="alert alert-success">
+                    <div class="messages">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
 
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
                     {% block sidebar %}
                     {% endblock sidebar %}
-                </ul>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <div class="content">
-                    {% block content %}
-                    {% endblock content%}
+                </div>
+
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="content">
+                            {% block breadcrumbs %}
+                                {% breadcrumb "Categories" "/" %}
+                                {% breadcrumb "Categories" "categories.views.index" %}
+                            {% endblock breadcrumbs%}
+                        </div>
+
+                        <div class="content">
+                            {% block content %}
+
+                            {% endblock content%}
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>   <!-- /.container -->
+
+        <div class="container">
+            <hr>
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; Martin Allard 2017</p>
+                    </div>
+                </div>
+            </footer>
+
         </div>
-        <hr>
-
-
-
-         <footer>
-             <div class="footer">
-                <p>Made By Martin Allard </p>
-            </div>
-         </footer>
-        <!-- script references -->
-
-
-
-
+        <!-- /.container -->
     </body>
 </html>

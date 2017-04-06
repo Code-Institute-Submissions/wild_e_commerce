@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from models import Product
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 from django.template.context_processors import csrf
-
+from categories.models import Category
 
 def get_index(request):
     return render(request, "index.html")
@@ -21,3 +21,16 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+# Create your views here.
+def get_productsdetails(request, id):
+    product = get_object_or_404(Product, pk=id)
+    #product.views += 1
+    product.save()
+    return render(request, "productdetails.html", {'product': product})
+
+
+
+
+
+

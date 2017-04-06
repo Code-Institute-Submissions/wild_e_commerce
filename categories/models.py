@@ -7,39 +7,10 @@ from products.models import Product
 class Category(models.Model):
     name = models.CharField(max_length=100)
     parent = models.ForeignKey('self', null=True, blank=True)
-    #products = models.ManyToManyField(Product)
+    products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):
-        return self.name
-
-# Create your models here.
-class SubCategory1(models.Model):
-    name = models.CharField(max_length=100)
-    parent = models.ForeignKey(Category, null=True)
-
-    #products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
-
-class SubCategory2(models.Model):
-    name = models.CharField(max_length=100)
-    parent = models.ForeignKey(SubCategory1, null=True)
-
-    #products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
-
-class SubCategory3(models.Model):
-    name = models.CharField(max_length=100)
-    parent = models.ForeignKey(SubCategory2, null=True)
-    products = models.ManyToManyField(Product)
-
-    def __str__(self):
-        return self.name
-
-
-
-
-
+        if self.parent:
+            return "{0}\{1}".format(self.parent, self.name)
+        else:
+            return self.name

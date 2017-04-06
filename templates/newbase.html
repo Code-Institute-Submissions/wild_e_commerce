@@ -3,37 +3,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <!-- Custom CSS -->
-
-    <link rel="stylesheet" href="{% static "css/shop-homepage.css" %}">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
-
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Wild Total Outdoors</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/shop-homepage.css" %}">
+        <link rel="stylesheet" href="{% static "css/accounts.css" %}">
+        <link rel="stylesheet" href="{% static "css/common.css" %}">
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css ">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+        {% block head_js %}{% endblock %}
+    </head>
 
 <body>
 
@@ -48,20 +35,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Wild Total Outdoors</a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
-                    </li>
+                        <a href="/"><i class="fa fa-home"></i> Home</a></li>
                     <li>
-                        <a href="#">Services</a>
+                    <li>
+                        <a href="#">About</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="{% url 'products' %}"><i class="fa fa-cube"></i> Categories</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><span><img src="{% gravatar_url user.email %}" style="width:25px; height: 25px; background-color: #12ABB2; color: #ffffff;" class="img-circle"></span> Account <span
+                                        class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    {% if user.is_authenticated %}
+                                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a></li>
+                                        <li><a href="{% url 'register' %}">Register</a></li>
+                                    {% endif %}
+                                </ul>
+                    </li>
+
+                    <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -75,12 +86,14 @@
         <div class="row">
 
             <div class="col-md-3">
+
                 <p class="lead">Shop Name</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                    {% block sidebar %}
+
+                    {% endblock sidebar %}
                 </div>
+
             </div>
 
             <div class="col-md-9">

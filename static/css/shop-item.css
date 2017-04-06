@@ -18,11 +18,12 @@ body {
     color: #d17581;
 }
 
-.thumbnail {
+.thumbnail_details {
     padding: 0;
+    height: 500px;
 }
 
-.thumbnail .caption-full {
+.thumbnail_details .caption-full {
     padding: 9px;
     color: #333;
 }

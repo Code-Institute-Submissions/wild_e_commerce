@@ -7,6 +7,7 @@ from django.template.context_processors import csrf
 from django.contrib import messages
 from django.conf import settings
 import stripe
+from categories.models import Category
 
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
@@ -50,11 +51,13 @@ def user_cart(request):
             return render(request, 'empty_cart.html')
 
         form = MakePaymentForm()# if we have something in the cart, we create the makepaymentform
-
+    categories = Category.objects.filter(parent=None)
     args = {'form': form,
             'items': cartItems,
             'total': total,
-            'publishable': settings.STRIPE_PUBLISHABLE}
+            'publishable': settings.STRIPE_PUBLISHABLE,
+            'categories': categories
+            }
     args.update(csrf(request))# adding csrf token to the form
 
     return render(request, 'cart.html', args)

@@ -6,6 +6,7 @@ from django.template.context_processors import csrf
 from django.conf import settings
 from products.models import Product
 import stripe
+from categories.models import Category
 
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -23,6 +24,8 @@ def buy_now(request, id):
                     description=product.name,
                     card=form.cleaned_data['stripe_id'],
                 )
+
+
             except stripe.error.CardError, e:
                 messages.error(request, "Your card was declined!")
 
@@ -37,8 +40,9 @@ def buy_now(request, id):
     else:
         form = MakePaymentForm()
         product = get_object_or_404(Product, pk=id)
+        categories = Category.objects.filter(parent=None)
 
-    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'product': product}
+    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'product': product, 'categories': categories}
     args.update(csrf(request))
 
     return render(request, 'pay.html', args)

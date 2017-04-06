@@ -1,4 +1,4 @@
-{% extends "oldbase.html" %}
+{% extends "base.html" %}
 {% block content %}
     <table class="table table-striped">
         <thead>
@@ -19,7 +19,7 @@
                 <td>{{ product.brand.name }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
+                <td> €{{ product.price }}</td>
                 <td><a href="{% url 'buy_now_stripe' product.id %}">Buy Now</a></td>
                 {#                    <td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>#}
                 <td>

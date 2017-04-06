@@ -20,6 +20,9 @@
 	height:200px;
 	background-color: black;
 	padding:0px;
+	position:fixed;
+	top: 20px;
+
 }
 
 .LogoLeft
@@ -58,3 +61,16 @@
 	max-width: 100%;
 
 }
+
+
+
+
+
+
+
+
+/*
+.thumbnail img
+{
+	overflow: hidden;
+}*/

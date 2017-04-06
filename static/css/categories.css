@@ -5,7 +5,7 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 300px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 .hero-spacer {
@@ -18,29 +18,57 @@ body {
 
 }
 
-.caption {
-    height: 200px;
+.prod_img
+{
+	height:180px;
+	width:180px;
+	overflow:hidden;
+    padding:0;
+    margin: 0 auto;
+}
+
+.caption
+{
+    height: 60px;
     overflow: hidden;
 }
 
-.caption h4 {
-    white-space: nowrap;
+.caption h4
+{
+    color:#019C01;
 }
 
-.thumbnail img {
-    width: 90%;
-    padding: 10px;
-    height: 90%;
+.prod_caption
+{
+    height:80px;
+	width: 100%;
+
+}
+.prod_caption2
+{
+    height:50px;
+	width: 100%;
+}
+
+.thumbnail img
+{
+    width: 100%;
+    padding: 5px;
+    height: 100%;
     object-fit: contain;
-
 }
-
-
-.thumbnail {
+.thumbnail
+{
     padding: 0;
 }
 
-
+.thumbnail .caption
+{
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 footer {
     margin: 50px 0;

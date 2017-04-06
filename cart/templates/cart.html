@@ -4,7 +4,6 @@
 
 {% block head_js %}
   <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
       //<![CDATA[
       Stripe.publishableKey = '{{ publishable }}';
@@ -21,6 +20,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Quantity</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -30,7 +30,8 @@
                     <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.product.description }}</td>
-                    <td>{{ item.product.price }}</td>
+                    <td>€ {{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
                     <td><a href="{% url 'remove_from_cart' item.id %}">Remove</a></td>
                 </tr>
             {% endfor %}
@@ -38,7 +39,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ total }}</td>
+                    <td>Total: € {{ total }}</td>
                     <td></td>
                 </tr>
         </tbody>
