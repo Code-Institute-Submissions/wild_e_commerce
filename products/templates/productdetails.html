@@ -13,7 +13,6 @@
                         <a href="{% url 'buy_now_stripe' product.id %}" >Buy Now</a>
 
 
-
                         <form method="post" action="{% url 'add_to_cart' product.id %}">
                             {% csrf_token %}
                             Quantity

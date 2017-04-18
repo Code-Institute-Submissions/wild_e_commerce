@@ -4,6 +4,7 @@ env.bat
 *.sqlite3
 media
 env.py
+static
 
 
 

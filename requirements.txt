@@ -1,6 +1,6 @@
 boto==2.46.1
 dj-database-url==0.4.2
-Django==1.10.6
+Django==1.11
 django-bootstrap==0.2.4
 django-bootstrap-breadcrumbs==0.8.2
 django-bootstrap-forms==0.1
@@ -12,6 +12,7 @@ gunicorn==19.7.1
 olefile==0.44
 Pillow==4.0.0
 psycopg2==2.7.1
+pytz==2017.2
 requests==2.13.0
 six==1.10.0
 stripe==1.51.0

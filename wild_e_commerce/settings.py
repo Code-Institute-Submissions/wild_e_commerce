@@ -15,7 +15,7 @@ import os
 import dj_database_url
 
 
-#import env
+import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +28,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+#DEBUG = os.environ.get('DEBUG', False)
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['mallard-wild-e-commerce.herokuapp.com', u'127.0.0.1']
@@ -84,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media'
+                #'categories.views.root_categories_context'
             ],
         },
     },
@@ -96,15 +98,15 @@ WSGI_APPLICATION = 'wild_e_commerce.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+#DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
-#DATABASES = {
-#	    'default': {
-#	        'ENGINE': 'django.db.backends.sqlite3',
-#	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#	    }
-#	}
+DATABASES = {
+	    'default': {
+	        'ENGINE': 'django.db.backends.sqlite3',
+	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+	}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators

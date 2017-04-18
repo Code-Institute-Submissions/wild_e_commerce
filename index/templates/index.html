@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
-{% block sidebar %}
 
+
+{% block sidebar %}
+<p class="lead">Categories</p>
+        <div class="list-group">
+
+                {% for category in root_categories %}
+                    <a href="{% url 'category' category.id %}" class="list-group-item">{{ category.name }}</a>
+                {% endfor %}
+
+        </div>
 {% endblock sidebar %}
 
 {% block content %}

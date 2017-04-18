@@ -32,6 +32,11 @@ def get_productsdetails(request, id):
     args = {'categories': categories, 'subcategories': subcategories, 'products': products}
     return render(request, 'productdetails.html', {'productinfo':products}, args)
 
+
+#def root_categories_context(request):
+#    categories = Category.objects.filter(parent=None)
+#    return {'root_categories': categories}
+
 #########################
 
 
