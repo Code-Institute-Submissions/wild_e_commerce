@@ -59,20 +59,28 @@
 	background-color: #4cae4c;
 }
 
+
 .footer
 {
-	padding-top: 20px;
+	padding-top: 0;
     border-top: 10px solid #332e20;
     background-color: lightgray;
+	padding-bottom: 0;
 	/*max-height: 250px;*/
 }
 
+
+
+
 /***********
-.Deer img
+li
 {
-    width: 100%;
-    padding: 5px;
-    height: 100%;
-    object-fit: contain;
+	list-style:none;
 }
-*****************/
+**************/
+
+.col-md-12.Deer img
+{
+
+	
+}

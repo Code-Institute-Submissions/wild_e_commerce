@@ -5,7 +5,6 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template.context_processors import csrf
 from index.views import get_index
 from django.contrib.auth.decorators import login_required
-#from categories.models import Category
 
 def logout(request):
     auth.logout(request)
@@ -15,8 +14,6 @@ def logout(request):
 
 @login_required(login_url='/accounts/login')
 def profile(request):
-    #categories = Category.objects.filter(parent=None)
-    #args = {'categories': categories}
     return render(request, 'profile.html')
 
 

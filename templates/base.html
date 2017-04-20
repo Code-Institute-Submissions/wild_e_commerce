@@ -1,5 +1,4 @@
 {% load static from staticfiles %}
-{% load django_bootstrap_breadcrumbs %}
 {% load gravatar %}
 
 <!DOCTYPE html>
@@ -8,16 +7,13 @@
         <meta charset="utf-8">
         <title>Wild Total Outdoors</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+
         <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css">
         <link rel="stylesheet" href="{% static "css/categories.css" %}">
         <link rel="stylesheet" href="{% static "css/accounts.css" %}">
         <link rel="stylesheet" href="{% static "css/common.css" %}">
-
         <script src="{% static "js/jquery-3.2.0.min.js" %}"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         <script src="{% static "js/navbar.js" %}"></script>
@@ -27,131 +23,22 @@
         {% block head_js %}{% endblock %}
     </head>
     <body >
-        <div class="container">
 
-            <div class="row">
-                    <!-- Fixed masthead -->
-                    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
+        {% include 'navbar.html' %}
 
-                        <div class="container">
-
-                           <!--- navbar-header --->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                                        aria-expanded="false" aria-controls="navbar">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                    <a class="navbar-brand" href="{% url 'index' %}">
-                                        <img src="{% static "images/WildLogo100.png" %}" alt="">
-                                    </a>
-                            </div>
-                            <!--- navbar-header --->
-
-
-
-                            <!--- navbar collapse --->
-                            <div id="navbar" class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <form class="navbar-form navbar-left">
-                                            <input type="text" class="form-control" placeholder="Search">
-                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Search</button>
-                                        </form>
-                                    </li>
-                                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                                     <li class="dropdown">
-                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-info"></i> Information <span class="caret"></span></a>
-                                             <ul class="dropdown-menu">
-                                                 <li><a href="/"><i class="fa fa-address-book"></i> Contact Us</a></li>
-                                                 <li><a href="/"><i class="fa fa-id-badge"></i> About Us</a></li>
-                                             </ul>
-                                    </li>
-                                    <li><a href="/"><i class="fa fa-cubes"></i> Brands</a></li>
-                                    <li>
-                                        <a href="{% url 'categories' %}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cube"></i> Products<b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            {% for category in categories %}
-                                                <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                           aria-expanded="false"><span><img src="{% gravatar_url user.email %}"
-                                                                            style="width:25px; height: 25px; background-color: #12ABB2; color: #ffffff;"
-                                                                            class="img-circle"></span> Account <span
-                                                class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            {% if user.is_authenticated %}
-                                                <li><a href="{% url 'profile' %}">Profile</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="{% url 'logout' %}">Log Out</a></li>
-                                            {% else %}
-                                                <li><a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a></li>
-                                                <li><a href="{% url 'register' %}">Register</a></li>
-                                            {% endif %}
-                                        </ul>
-                                    </li>
-                                    <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                                </ul>
-                            </div><!--- navbar collapse --->
-                        </div> <!--End of Nav Container -->
-                    </nav><!--End of Nav Bar -->
-            </div>
-        </div>
         <div class="container">
             <div class ="spacer">
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
+        {% block carousel %}
+
+        {% endblock carousel %}
 
 
-                <div class="col-md-12">
-
-                    <div class="row carousel-holder">
-
-                        <div class="col-md-12">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img class="slide-image" src="{% static "images/carousel/frontofshop800_300.jpg" %}" alt="">
-                                    </div>
-                                    <div class="item">
-                                        <img class="slide-image" src="{% static "images/carousel/groundbait800_300.jpg" %}" alt="">
-                                    </div>
-                                    <div class="item">
-                                        <img class="slide-image" src="{% static "images/carousel/backofshop800_300.jpg" %}" alt="">
-                                    </div>
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
 
         <div class="container">
-            <hr>
+
             {% if messages %}
                 <div class="alert alert-success">
                     <div class="messages">
@@ -172,26 +59,19 @@
                 </div>
 
                 <div class="col-md-9">
-                    <div class="row">
-                        <div class="content">
-                            {% block breadcrumbs %}
-                                {% breadcrumb "Categories" "/" %}
-                                {% breadcrumb "Categories" "categories.views.index" %}
-                            {% endblock breadcrumbs%}
-                        </div>
 
-                        <div class="content">
+
                             {% block content %}
 
                             {% endblock content%}
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>   <!-- /.container -->
 
         <div class="container">
-            <hr>
+
 
             <!-- Footer -->
             <footer class="navbar-default footer">
@@ -215,17 +95,17 @@
                           <a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a><br>
                           <a href="{% url 'register' %}">Register</a><br>
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                           <strong>Categories</strong><br>
 
-                              <ul>
-                                {% for category in categories %}
+                              {% for category in root_categories %}
+
                                     <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-                                {% endfor %}
-                              </ul>
+
+                              {% endfor %}
 
                       </div>
-                      <div class="col-md-6 Deer">
+                      <div class="col-md-5 Deer">
                           <img src="{% static "images/DeerLogo.png" %}" alt="">
                       </div>
 
