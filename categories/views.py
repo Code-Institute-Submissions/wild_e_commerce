@@ -42,10 +42,3 @@ def get_productsdetails(request, id):
     return render(request, 'productdetails.html', {'productinfo':products}, args)
 
 
-
-
-#########################
-
-
-#def get_cat(request):
-#    return render(request ,"categories.html")

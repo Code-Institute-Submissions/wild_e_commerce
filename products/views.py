@@ -26,13 +26,13 @@ class ProductViewSet(viewsets.ModelViewSet):
 # Create your views here.
 def get_productsdetails(request, id):
     product = get_object_or_404(Product, pk=id)
-    #product.views += 1
     product.save()
     return render(request, "productdetails.html", {'product': product})
 
+def new_products(request):
+    stat = Product.objects.filter(status=1)
+    return {'new_products': stat}
 
-def get_productslist(request, id):
-    product_list = get_object_or_404(Product, pk=id)
-    products = product_list.products.all()
-    return render(request, "productslist.html", {'product': products})
-
+def special_products(request):
+    stat = Product.objects.filter(status=2)
+    return {'special_products': stat}

@@ -13,30 +13,42 @@
 {% block content %}
 
 
-<div id="exTab2" class="container">
-<ul class="nav nav-tabs">
-			<li class="active">
-        <a  href="#1" data-toggle="tab">New Arrivals</a>
-			</li>
-			<li><a href="#2" data-toggle="tab">Most Popular</a>
-			</li>
-			<li><a href="#3" data-toggle="tab">Specials</a>
-			</li>
-		</ul>
+    <div class="row">
+        <div class="col-md-9">
+            <div id="exTab2" class="container">
+                <div class="col-md-9">
+                    <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a  href="#1" data-toggle="tab">New Arrivals</a>
+                            </li>
+                            <li>
+                                <a href="#2" data-toggle="tab">Featured</a>
+                            </li>
+                            <li>
+                                <a href="#3" data-toggle="tab">Specials</a>
+                            </li>
+                    </ul>
 
-			<div class="tab-content ">
-			  <div class="tab-pane active" id="1">
-          <h3>New Arrivals content </h3>
-                  {% include 'newproducts.html' %}
-              </div>
-				<div class="tab-pane" id="2">
-          <h3>Most Popular content</h3>
-				</div>
-        <div class="tab-pane" id="3">
-          <h3>Specials Content</h3>
-				</div>
-			</div>
-  </div>
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="1">
+                            <div class ="spacer50">
+                            </div>
+                            {% include 'newproducts.html' %}
+                        </div>
+                        <div class="tab-pane" id="2">
+                            <h3>Featured</h3>
+                        </div>
+                        <div class="tab-pane" id="3">
+                            <div class ="spacer50">
+                            </div>
+                            {% include 'specialproducts.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 {% endblock %}
 
 
