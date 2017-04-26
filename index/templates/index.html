@@ -1,19 +1,42 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
+<link rel="stylesheet" href="{% static "css/common.css" %}">
 
 {% block carousel %}
     {% include 'carousel.html' %}
 {% endblock carousel %}
 
-
 {% block sidebar %}
-    <p class="lead">Categories</p>
-    <div class="list-group">
-        {% for category in root_categories %}
-            <a href="{% url 'category' category.id %}" class="list-group-item">{{ category.name }}</a>
-        {% endfor %}
-    </div>
+    {% include 'root_categories.html' %}
 {% endblock sidebar %}
 
 {% block content %}
-    <p>Wild Total Outdoors is a shop located in the heart of Ireland. We cater for anglers, game hunting and archery hobbies. We also stock outdoor footwear, survival equipment, thermal wear and a large selection of clothing. Simply, we are packed to the rafers with all the top of the range gear you with ever need for outdoor actitvities.</p>
+
+
+<div id="exTab2" class="container">
+<ul class="nav nav-tabs">
+			<li class="active">
+        <a  href="#1" data-toggle="tab">New Arrivals</a>
+			</li>
+			<li><a href="#2" data-toggle="tab">Most Popular</a>
+			</li>
+			<li><a href="#3" data-toggle="tab">Specials</a>
+			</li>
+		</ul>
+
+			<div class="tab-content ">
+			  <div class="tab-pane active" id="1">
+          <h3>New Arrivals content </h3>
+                  {% include 'newproducts.html' %}
+              </div>
+				<div class="tab-pane" id="2">
+          <h3>Most Popular content</h3>
+				</div>
+        <div class="tab-pane" id="3">
+          <h3>Specials Content</h3>
+				</div>
+			</div>
+  </div>
 {% endblock %}
+
+

@@ -23,12 +23,14 @@ from categories import urls as categories_urls
 from accounts import urls as accounts_urls
 from cart import urls as cart_urls
 from payments import urls as payments_urls
+from brands import urls as brands_urls
 
 from django.views import static
 
 from rest_framework import routers
 from products import views as product_views
 from cart import views as cart_views
+
 
 
 router = routers.DefaultRouter()
@@ -41,16 +43,15 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', get_cat),
     url(r'^$', get_index),
     url(r'^categories/', include(categories_urls)),
     url(r'^products/', include(products_urls)),
     url(r'^cart/', include(cart_urls)),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^payments/', include(payments_urls)),
-    #url(r'^$', get_cat, name='categories'),
     url(r'^$', get_index, name='index'),
     url(r'user/', include(accounts_urls)),
+    url(r'^brands/', include(brands_urls)),
 
     #url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
     #url(r'^static/(?P<path>.*)$', static.serve,{'document_root': STATIC_ROOT}),

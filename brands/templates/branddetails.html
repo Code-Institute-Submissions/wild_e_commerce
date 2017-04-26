@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    {% include 'root_categories.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                                <div class="thumbnail_details">
+
+                                    <img height="300" width="300"  src="{{ MEDIA_URL }}{{ brand.image }}" alt="">
+                                    <div class="caption-full">
+                                        <h5>{{ brand.name }}</h5>
+                                        <h5>{{ brand.id }}</h5>
+
+                                    </div>
+                                    <div class=" caption text-center">
+
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        {% for product in products %}
+                                    <div class="col-md-3 col-sm-3 col-lg-3">
+                                        <div class="thumbnail" >
+                                            <div class = "prod_img">
+                                                <img height="180" width="180"  src="{{ MEDIA_URL }}{{ product.image }}" alt="">
+                                            </div>
+
+                                                <div class=" caption text-center prod_caption">
+                                                    <h5>{{ product.name }}</h5>
+                                                </div>
+                                                <div class=" text-center prod_caption2">
+                                                    <h5>Product No: {{ product.id }}</h5>
+                                                    <h5>€{{ product.price }}</h5>
+                                                </div>
+                                                <div class=" caption text-center">
+
+                                                    <a class="btn btn-default" onclick="location.href='{% url 'product_details' product.id %}'">More Details</a>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+{% endblock content %}

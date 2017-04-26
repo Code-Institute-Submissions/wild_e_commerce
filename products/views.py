@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .serializers import ProductSerializer
 from django.template.context_processors import csrf
 from categories.models import Category
+from brands.models import Brand
 
 def get_index(request):
     return render(request, "index.html")
@@ -30,7 +31,8 @@ def get_productsdetails(request, id):
     return render(request, "productdetails.html", {'product': product})
 
 
-
-
-
+def get_productslist(request, id):
+    product_list = get_object_or_404(Product, pk=id)
+    products = product_list.products.all()
+    return render(request, "productslist.html", {'product': products})
 
