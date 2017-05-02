@@ -1,5 +1,6 @@
 {% load static from staticfiles %}
 {% load gravatar %}
+<script src="{% static "js/common.js" %}"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         <script src="{% static "js/navbar.js" %}"></script>
         <script src="{% static "js/bannerrotator.js" %}"></script>
-
+        <script src="{% static "js/common.js" %}"></script>
 
         {% block head_js %}{% endblock %}
     </head>

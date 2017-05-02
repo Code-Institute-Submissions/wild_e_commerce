@@ -1,0 +1,31 @@
+{% load static from staticfiles %}
+{% load gravatar %}
+
+
+{% for product in products %}
+    {% if product in new_products %}
+        {% if category == cats %}
+                    <div class="col-md-4 col-sm-4 col-lg-4">
+                        <div class="thumbnail" >
+                            <div class = "prod_img">
+                                <img height="180" width="180"  src="{{ MEDIA_URL }}{{ product.image }}" alt="">
+                            </div>
+
+                                <div class=" caption text-center prod_caption">
+                                    <h5>{{ product.name }}</h5>
+                                </div>
+                                <div class=" text-center prod_caption2">
+                                    <h5>Product No: {{ product.id }}</h5>
+                                    <h5>€{{ product.price }}</h5>
+
+                                </div>
+                                <div class=" caption text-center">
+
+                                    <a class="btn btn-default" onclick="location.href='{% url 'product_details' product.id %}'">More Details</a>
+                                </div>
+
+                        </div>
+                    </div>
+        {% endif %}
+    {% endif %}
+{% endfor %}

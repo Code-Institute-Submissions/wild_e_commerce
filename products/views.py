@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from models import Product
+from models import Product, Status
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 from django.template.context_processors import csrf
 from categories.models import Category
 from brands.models import Brand
+from django.db.models import F
+
 
 def get_index(request):
     return render(request, "index.html")
@@ -30,9 +32,14 @@ def get_productsdetails(request, id):
     return render(request, "productdetails.html", {'product': product})
 
 def new_products(request):
-    stat = Product.objects.filter(status=1)
+    stat = Product.objects.filter(statusname_id=4)
     return {'new_products': stat}
 
 def special_products(request):
-    stat = Product.objects.filter(status=2)
+    stat = Product.objects.filter(statusname_id=5)
     return {'special_products': stat}
+
+def featured_products(request):
+    stat = Product.objects.filter(statusname_id=6)
+    return {'featured_products': stat}
+

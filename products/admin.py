@@ -4,5 +4,5 @@ from models import Product, Status
 # Register your models here.
 admin.site.register(Product)
 
-admin.site.register(Status)
+
 

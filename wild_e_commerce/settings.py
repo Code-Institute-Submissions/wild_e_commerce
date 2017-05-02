@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_bootstrap_breadcrumbs',
     'rest_framework',
     'boto',
+    'status',
 
 ]
 
@@ -88,6 +89,7 @@ TEMPLATES = [
                 'categories.views.root_categories_context',
                 'products.views.new_products',
                 'products.views.special_products',
+                'products.views.featured_products',
             ],
         },
     },
