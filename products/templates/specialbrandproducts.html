@@ -1,11 +1,11 @@
-    {% load static from staticfiles %}
+{% load static from staticfiles %}
 {% load gravatar %}
 
 <div class="row">
     <div class="col-lg-12">
         {% for product in products %}
-            {% if product.statusname_id == 6 %}
-                {% include 'categoryincats.html' %}
+            {% if product.statusname_id == 5 %}
+                {% include 'brandincats.html' %}
             {% endif %}
         {% endfor %}
     </div>

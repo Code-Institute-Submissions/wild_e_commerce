@@ -2,7 +2,7 @@
 {% load gravatar %}
 
 <p class="lead">Categories</p>
-    <div class="list-group">
+    <div class="list-group2">
         {% for category in root_categories %}
             <a href="{% url 'category' category.id %}" class="list-group-item">{{ category.name }}</a>
         {% endfor %}

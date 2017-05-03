@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category
 from products.models import Product
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from django.core.paginator import Paginator
+
 
 # Create your views here.
 def root_categories(request):
     categories = Category.objects.filter(parent=None)
-
     args = { 'categories': categories, 'subcategories': {}, 'products': {}}
     return render(request, 'categories.html', args)
 
@@ -30,8 +30,7 @@ def get_category(request, id):
 
     products = this_category.products.all()
 
-
-    args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs}
+    args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs }
     return render(request, 'categories.html', args)
 
 

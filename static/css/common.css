@@ -103,3 +103,7 @@ li
   padding : 5px 15px;
 }
 
+a.list-group2-item
+{
+    background-color: darkgrey;
+}

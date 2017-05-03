@@ -5,7 +5,9 @@ from .serializers import ProductSerializer
 from django.template.context_processors import csrf
 from categories.models import Category
 from brands.models import Brand
-from django.db.models import F
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 def get_index(request):
@@ -43,3 +45,23 @@ def featured_products(request):
     stat = Product.objects.filter(statusname_id=6)
     return {'featured_products': stat}
 
+def all_products(request):
+    stat = Product.objects.all()
+    return {'all_products': stat}
+
+
+#def product_listing(request):
+ #   product_list = Product.objects.all()
+ #   paginator = Paginator(product_list, 4) # Show 25 contacts per page
+
+  #  page = request.GET.get('page')
+  #  try:
+  #      productx = paginator.page(page)
+  #  except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+  #      productx = paginator.page(1)
+   # except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+    #    productx = paginator.page(paginator.num_pages)
+
+   # return render(request, 'newcategoryproducts.html', {'product_list': productx})

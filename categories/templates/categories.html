@@ -1,95 +1,85 @@
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load django_bootstrap_breadcrumbs %}
 
 {% block sidebar %}
-    <p class="lead">Categories</p>
+
+
+    <p class="lead">Sub Categories</p>
     <div class="list-group">
         {% for category in categories %}
             <a href="{% url 'category' category.id %}" class="list-group-item">{{ category.name }}</a>
         {% endfor %}
     </div>
+
+    {% include 'root_categories.html' %}
 {% endblock sidebar %}
 
 {% block content %}
+<div class="row">
+    <div class="col-lg-12">
+         <ol class="breadcrumb">
+            {% for crumb in crumbs %}
+                {% if forloop.last %}
+                    <li class="active">{{ crumb.name }}</li>
+                {% else %}
+                    <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+
+
 <div class="row">
         <div class="col-md-9">
             <div id="exTab3" class="container">
                 <div class="col-md-9">
                     <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a  href="#1" data-toggle="tab">New Arrivals</a>
+                        <li class="active">
+                                <a  href="#1" data-toggle="tab">All Products</a>
                             </li>
                             <li>
-                                <a href="#2" data-toggle="tab">Specials</a>
+                                <a  href="#2" data-toggle="tab">New Arrivals</a>
                             </li>
                             <li>
-                                <a href="#3" data-toggle="tab">Featured</a>
+                                <a href="#3" data-toggle="tab">Specials</a>
+                            </li>
+                            <li>
+                                <a href="#4" data-toggle="tab">Featured</a>
                             </li>
                     </ul>
 
-                    <div class="tab-content ">
+                    <div class="tab-content">
                         <div class="tab-pane active" id="1">
                             <div class ="spacer50">
                             </div>
-                            {% include 'newcategoryproducts.html' %}
+                            {% include 'allcategoryproducts.html' %}
+
                         </div>
                         <div class="tab-pane" id="2">
                             <div class ="spacer50">
                             </div>
-                            {% include 'specialcategoryproducts.html' %}
+                            {% include 'newcategoryproducts.html' %}
                         </div>
                         <div class="tab-pane" id="3">
                             <div class ="spacer50">
                             </div>
+                            {% include 'specialcategoryproducts.html' %}
+                        </div>
+                        <div class="tab-pane" id="4">
+                            <div class ="spacer50">
+                            </div>
                             {% include 'featuredcategoryproducts.html' %}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+</div>
 
 
 
-
-
-
-
-    <div class="row">
-        <div class="col-lg-12">
-             <ol class="breadcrumb">
-                {% for crumb in crumbs %}
-                    {% if forloop.last %}
-                        <li class="active">{{ crumb.name }}</li>
-                    {% else %}
-                        <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ol>
-
-            {% for product in products %}
-                <div class="col-md-3 col-sm-3 col-lg-3">
-                    <div class="thumbnail" >
-                        <div class = "prod_img">
-                            <img height="180" width="180"  src="{{ MEDIA_URL }}{{ product.image }}" alt="">
-                        </div>
-
-                            <div class=" caption text-center prod_caption">
-                                <h5>{{ product.name }}</h5>
-                            </div>
-                            <div class=" text-center prod_caption2">
-                                <h5>Product No: {{ product.id }}</h5>
-                                <h5>€{{ product.price }}</h5>
-                            </div>
-                            <div class=" caption text-center">
-
-                                <a class="btn btn-default" onclick="location.href='{% url 'product_details' product.id %}'">More Details</a>
-                            </div>
-
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
 {% endblock content %}
 
