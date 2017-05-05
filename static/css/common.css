@@ -1,6 +1,37 @@
+
+
+/*
+Color Pallette
+
+Monochromatic Colors of #007500
+navbar background #007500
+H3 #008f00
+H4 #00a800
+H5 #00c200
+
+Triadic Colors of #007500
+Green #007500
+Blue #000075
+Dark Red #750000
+
+
+Complementary Color
+Green #007500
+Purple #750075
+
+Related Colors to Green #007500
+
+#148314
+#147014
+#146e14
+#148814
+#147114
+#146514
+#146914
+*/
+
 *
 {
-	-ms-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 }
@@ -16,20 +47,26 @@
 }
 
 /*carousel*/
-.slide-image {
+.slide-image
+{
     width: 100%;
 
 }
 
-.carousel-holder {
+.carousel-holder
+{
     margin-bottom: 30px;
 }
 
 .carousel-control,
-.item {
+.item
+{
     border-radius: 4px;
 }
 
+/*end of carousel*/
+
+/*spacers*/
 .spacer100
 {
 	height:100px;
@@ -40,13 +77,17 @@
 	height:50px;
 }
 
-.navbar-fixed-top .nav {
+/*end of spacers*/
+
+
+.navbar-fixed-top .nav
+{
     padding: 30px 0;
 }
 
-.navbar-fixed-top .navbar-brand {
+.navbar-fixed-top .navbar-brand
+{
     padding: 0 15px;
-
 }
 
 .navbar-brand img
@@ -57,38 +98,41 @@
 .navbar-brand
 {
 	height: 110px;
-
 }
 .navbar-default
 {
-	background-color: #4cae4c;
+	background-color: #007500;
 }
 
-
-.footer
+#spacerwidth
 {
-	padding-top: 0;
-    border-top: 10px solid #332e20;
-    background-color: lightgray;
-	padding-bottom: 0;
-	/*max-height: 250px;*/
+    width: 100px;
+    height: 20px;
 }
 
-
-
-
-/***********
-li
+.lead.root
 {
-	list-style:none;
+    color: #007500;
+    font-weight:bold;
 }
-**************/
 
-.col-md-12.Deer img
+.list-group2 a
 {
-
-	
+    color: #007500;
 }
+
+.lead
+{
+    color: #00a800;
+    font-weight:bold;
+}
+
+.list-group a
+{
+    color: #00a800;
+}
+
+
 
 
 #exTab2 h3 {
@@ -103,7 +147,34 @@ li
   padding : 5px 15px;
 }
 
-a.list-group2-item
+
+div.col-md-5.Deer img
 {
-    background-color: darkgrey;
+    padding-right: 0;
+    margin-right: -10px;
+}
+
+li
+{
+    list-style: none;
+}
+
+h3.ProductName
+{
+    color:  #007500;
+
+}
+h4.ProductPrice
+{
+    color: #a20000;
+
+}
+
+.footer
+{
+	padding-top: 0;
+    border-top: 10px solid #332e20;
+    background-color: lightgray;
+	padding-bottom: 0;
+	/*max-height: 250px;*/
 }

@@ -8,19 +8,18 @@
 
     <div class="row">
         <div class="col-lg-12">
-                <div class="thumbnail_details">
+            <div class="col-lg-5">
+                <img height="300" width="300"  src="{{ MEDIA_URL }}{{ brand.image }}" alt="">
 
-                    <img height="300" width="300"  src="{{ MEDIA_URL }}{{ brand.image }}" alt="">
-                    <div class="caption-full">
-                        <h5>{{ brand.name }}</h5>
-                        <h5>{{ brand.id }}</h5>
+            </div>
+            <div class="col-lg-7">
+                <p>{{ brand.description }}</p>
+            </div>
 
-                    </div>
-                    <div class=" caption text-center">
-
-                    </div>
-                </div>
         </div>
+    </div>
+    <div class ="spacer50">
+
     </div>
 
     <div class="row">

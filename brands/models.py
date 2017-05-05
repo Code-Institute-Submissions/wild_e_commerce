@@ -7,6 +7,7 @@ from products.models import Product
 class Brand(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images', null=True, blank=True )
+    description = models.TextField(null=True, blank=True)
     products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):

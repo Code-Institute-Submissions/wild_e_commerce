@@ -1,0 +1,45 @@
+{% load static from staticfiles %}
+{% load gravatar %}
+
+<div class="container">
+<!-- Footer -->
+            <footer class="navbar-default footer">
+                 <div class="container">
+                  <div class=”row”>
+                      <div class="col-md-2">
+                          <address>
+                            <strong>Wild Total Outdoors</strong><br>
+                            1 Friars Mill Road<br>
+                            Mullingar, Co. Westmeath<br>
+                            (044) 930 1133 <br>
+                            <a href="/">Contact Us</a>
+                        </address>
+                      </div>
+                      <div class="col-md-2">
+                          <strong>Navigation</strong><br>
+                          <a href="/"> Contact Us</a><br>
+                          <a href="/"> About Us</a><br>
+                          <br>
+                          <strong>Account</strong><br>
+                          <a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a><br>
+                          <a href="{% url 'register' %}">Register</a><br>
+                      </div>
+                      <div class="col-md-3">
+                          <strong>Categories</strong><br>
+
+                              {% for category in root_categories %}
+
+                                    <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+
+                              {% endfor %}
+
+                      </div>
+                      <div class="col-md-5 Deer">
+                          <img src="{% static "images/DeerLogo.png" %}" alt="">
+                      </div>
+
+                  </div>
+                 </div><!-- end container -->
+            </footer>
+</div>
+        <!-- /.container -->
