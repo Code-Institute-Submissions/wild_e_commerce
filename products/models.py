@@ -11,7 +11,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images')
     statusname = models.ForeignKey(Status, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
+    brandname = models.ForeignKey(Status, null=True, blank=True)
     def __str__(self):
         return self.name
 
