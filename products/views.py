@@ -34,16 +34,16 @@ def get_productsdetails(request, id):
     return render(request, "productdetails.html", {'product': product})
 
 def new_products(request):
-    stat = Product.objects.filter(statusname_id=4)
-    return {'new_products': stat}
+    statnew = Product.objects.filter(statusname_id=1)
+    return {'new_products': statnew}
 
 def special_products(request):
-    stat = Product.objects.filter(statusname_id=5)
-    return {'special_products': stat}
+    statspecial = Product.objects.filter(statusname_id=2)
+    return {'special_products': statspecial}
 
 def featured_products(request):
-    stat = Product.objects.filter(statusname_id=6)
-    return {'featured_products': stat}
+    statfeatured = Product.objects.filter(statusname_id=3)
+    return {'featured_products': statfeatured}
 
 def all_products(request):
     stat = Product.objects.all()
