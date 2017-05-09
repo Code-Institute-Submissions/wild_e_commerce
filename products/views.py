@@ -4,7 +4,7 @@ from rest_framework import viewsets
 from .serializers import ProductSerializer
 from django.template.context_processors import csrf
 #from categories.models import Category
-from brands.models import Brand
+#from brands.models import Brand
 #from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
