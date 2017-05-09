@@ -28,7 +28,7 @@ def get_category(request, id):
 
     subcategories = Category.objects.filter(parent=this_category)
 
-    products = this_category.products.all()
+    products = this_category.products.all().order_by('name')
 
     args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs }
     return render(request, 'categories.html', args)

@@ -3,6 +3,7 @@ from products.models import Product
 from django.shortcuts import render
 from .models import Brand
 
+
 def root_brands(request):
     brands = Brand.objects.order_by('name')
     args = { 'brands': brands, 'products': {}}
@@ -10,7 +11,7 @@ def root_brands(request):
 
 def get_brands(request, id):
     this_brand = get_object_or_404(Brand, pk=id)
-    products = this_brand.products.all()
+    products = Product.objects.filter(brandname_id=this_brand)
     args = { 'brand': this_brand,'products': products}
     return render(request, 'branddetails.html', args)
 

@@ -1,13 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from models import Product, Status
+from models import Product
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 from django.template.context_processors import csrf
-from categories.models import Category
+#from categories.models import Category
 from brands.models import Brand
-
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+#from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def get_index(request):
@@ -48,6 +46,8 @@ def featured_products(request):
 def all_products(request):
     stat = Product.objects.all()
     return {'all_products': stat}
+
+
 
 
 #def product_listing(request):

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from status.models import Status
-
+from brands.models import Brand
 
 class Product(models.Model):
     name = models.CharField(max_length=254, default='')
@@ -11,7 +11,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images')
     statusname = models.ForeignKey(Status, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
+    brandname = models.ForeignKey(Brand, null=True, blank=True)
     def __str__(self):
         return self.name
 
