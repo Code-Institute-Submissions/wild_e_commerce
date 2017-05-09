@@ -11,7 +11,7 @@ def root_brands(request):
 
 def get_brands(request, id):
     this_brand = get_object_or_404(Brand, pk=id)
-    products = Product.objects.filter('brandname'== this_brand)
+    products = Product.objects.filter(brandname=this_brand)
     args = { 'brand': this_brand,'products': products}
     return render(request, 'branddetails.html', args)
 
