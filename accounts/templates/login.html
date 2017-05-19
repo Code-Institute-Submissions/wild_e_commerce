@@ -3,17 +3,18 @@
 
 {% block content %}
     {% if next %}
-        <form role="form" method="post" action="{% url 'login' %}?next={{ next }}"></form>
-    {% else %}
-        <form role="form" method="post" action="{% url 'login' %}"></form>
-    {% endif %}
-            <legend>Login</legend>
-            {% csrf_token %}
-            {{ form | as_bootstrap }}
+          <form role="form" method="post" action="{% url 'login' %}?next={{ next }}">
+      {% else %}
+          <form role="form" method="post" action="{% url 'login' %}">
+      {% endif %}
+             <legend>Login</legend>
+              {% csrf_token %}
+              {{ form | as_bootstrap }}
 
-                <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
+              <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
 
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+          </form>
 {% endblock content %}
