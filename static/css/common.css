@@ -1,8 +1,6 @@
 
-
+/*** Color Pallette ****/
 /*
-Color Pallette
-
 Monochromatic Colors of #007500
 navbar background #007500
 H3 #008f00
@@ -15,10 +13,6 @@ Blue #000075
 Dark Red #750000
 
 
-Complementary Color
-Green #007500
-Purple #750075
-
 Related Colors to Green #007500
 
 #148314
@@ -30,10 +24,15 @@ Related Colors to Green #007500
 #146914
 */
 
+/*** Color Pallette ****/
+
 *
 {
-	-moz-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .no-margin
@@ -46,39 +45,49 @@ Related Colors to Green #007500
 	padding: 0;
 }
 
-/*carousel*/
-.slide-image
+.display
 {
-    width: 100%;
-
+    display: inline-block;
 }
 
-.carousel-holder
-{
-    margin-bottom: 30px;
-}
 
-.carousel-control,
-.item
-{
-    border-radius: 4px;
-}
+/*** spacers***/
 
-/*end of carousel*/
-
-/*spacers*/
 .spacer100
 {
 	height:100px;
 }
 
+.spacer70
+{
+    height:70px;
+}
+.spacer65
+{
+     height:65px;
+}
 .spacer50
 {
 	height:50px;
 }
+.spacer35
+{
+    height:35px;
+}
+.spacer25
+{
+	height:25px;
+}
 
-/*end of spacers*/
+.spacer10
+{
+	height:10px;
+}
 
+/*** spacers***/
+
+
+/**** Navbar ****/
 
 .navbar-fixed-top .nav
 {
@@ -104,12 +113,38 @@ Related Colors to Green #007500
 	background-color: #007500;
 }
 
+/**** Navbar ****/
+
+
+/**** Carousel ****/
+.slide-image
+{
+    width: 100%;
+}
+
+.carousel-holder
+{
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item
+{
+    border-radius: 4px;
+}
+
+/**** Carousel ****/
+
+
+
+
 #spacerwidth
 {
     width: 100px;
     height: 20px;
 }
 
+/**** Categories Side Navbar ****/
 .lead.root
 {
     color: #007500;
@@ -123,51 +158,53 @@ Related Colors to Green #007500
 
 .lead
 {
-    color: #00a800;
+    color: #750000;
     font-weight:bold;
 }
 
 .list-group a
 {
-    color: #00a800;
+    color: #750000;
 }
 
+/**** Categories Side Navbar ****/
 
 
-
-#exTab2 h3 {
+/**** Products Tab  ****/
+#exTab2 h3
+{
   color : white;
   background-color: #428bca;
   padding : 5px 15px;
 }
 
-#exTab3 h3 {
+#exTab3 h3
+{
   color : white;
   background-color: #428bca;
   padding : 5px 15px;
 }
-
-
-div.col-md-5.Deer img
+.footer
 {
-    padding-right: 0;
-    margin-right: -10px;
+	padding-top: 0;
+    border-top: 10px solid #332e20;
+    background-color: lightgray;
+	padding-bottom: 0;
 }
 
-li
+div.tab-content
 {
-    list-style: none;
+    min-height:450px;
 }
+/**** Products Tab  ****/
 
-h3.ProductName
+/**** Footer ****/
+@media only screen and (max-device-width: 480px)
 {
-    color:  #007500;
-
-}
-h4.ProductPrice
-{
-    color: #a20000;
-
+    .display
+    {
+        display: inline-block;
+    }
 }
 
 .footer
@@ -176,5 +213,72 @@ h4.ProductPrice
     border-top: 10px solid #332e20;
     background-color: lightgray;
 	padding-bottom: 0;
-	/*max-height: 250px;*/
 }
+
+.joe
+{
+    background-color: black;
+}
+
+div.col-md-12.Deer
+{
+
+    height:200px;
+    padding-right: 0;
+}
+
+div.col-md-12.Deer img
+{
+    float: right;
+    margin-right: 15px;
+    padding-right: 0;
+}
+
+li
+{
+    list-style: none;
+}
+
+/**** Footer ****/
+
+
+/**** Product Details Page ****/
+
+.productimg
+{
+    width:300px;
+    height:300px;
+	overflow:hidden;
+    padding:5px;
+    margin: 0 auto;
+    align-content: center;
+}
+
+img.productdetailimage
+{
+    width:95%;
+    height:95%;
+    display:block;
+    margin:auto;
+}
+
+h3.ProductName
+{
+    color:  #007500;
+
+}
+
+h4.ProductPrice
+{
+    color: #a20000;
+}
+
+/**** Product Details Page ****/
+
+
+
+
+
+
+
+

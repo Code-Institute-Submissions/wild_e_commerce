@@ -19,7 +19,7 @@ def buy_now(request, id):
             try:
                 product = get_object_or_404(Product, pk=id)
                 customer = stripe.Charge.create(
-                    amount= int(product.price * 100),
+                    amount=int(product.price * 100),
                     currency="EUR",
                     description=product.name,
                     card=form.cleaned_data['stripe_id'],
@@ -31,7 +31,7 @@ def buy_now(request, id):
 
             if customer.paid:
                 messages.success(request, "You have successfully paid")
-                return redirect(reverse('products'))
+                return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to take payment")
         else:

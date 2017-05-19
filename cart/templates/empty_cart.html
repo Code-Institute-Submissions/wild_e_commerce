@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
+{% block sidebar %}
+    {% include 'root_categories.html' %}
+{% endblock sidebar %}
+
 {% block content %}
     <div>You have no items in your cart.</div>
-    <div><a href="{% url 'products' %}">Go shop</a></div>
+    <div><a href="{% url 'index' %}">Go shop</a></div>
 {% endblock %}

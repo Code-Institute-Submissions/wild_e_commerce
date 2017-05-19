@@ -1,6 +1,7 @@
-{% extends "oldbase.html" %}
+{% extends "base.html" %}
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
+
 {% block head_js %}
   <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
   <script type="text/javascript">
@@ -9,7 +10,7 @@
       //]]>
   </script>
   <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
+{% endblock head_js %}
  
 {% block content %}
     <form role="form" method="post" id="payment-form" action="{% url 'buy_now_stripe' product.id %}">
@@ -30,8 +31,8 @@
 
     {% csrf_token %}
     {{ form|as_bootstrap }}
-    <div class="form-group">
-      <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-    </div>
+        <div class="form-group">
+          <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+        </div>
     </form>
 {% endblock %}

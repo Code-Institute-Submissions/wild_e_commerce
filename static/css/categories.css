@@ -1,36 +1,54 @@
-/*
- * Start Bootstrap - Heroic Features (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
 
-body {
-    padding-top: 300px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+body
+{
+    padding-top: 300px;
 }
 
-.hero-spacer {
+.hero-spacer
+{
     margin-top: 50px;
 }
 
-.hero-feature {
+.hero-feature
+{
     margin-bottom: 30px;
     height: 200px;
-
 }
 
 .prod_img
 {
-	height:180px;
 	width:95%;
+    height:95%;
 	overflow:hidden;
-    padding:2px;
+    padding:5px;
     margin: 0 auto;
+    align-content: center;
 }
 
 .prod_img img
 {
-    height:178px;
-	width:98%;
+    width:95%;
+    height:95%;
+    display:block;
+    margin:auto;
+}
+
+.prod_img_brand
+{
+	width:180px;
+    height:180px;
+	overflow:hidden;
+    padding:5px;
+    margin: 0 auto;
+    align-content: center;
+}
+
+.prod_img_brand img
+{
+	width:170px;
+    height:170px;
+    display:block;
+    margin:auto;
 }
 
 .caption
@@ -46,7 +64,7 @@ body {
 
 .prod_caption
 {
-    height:80px;
+    height:100px;
 	width: 100%;
 
 }
@@ -56,14 +74,6 @@ body {
 	width: 100%;
 }
 
-
-/*.thumbnail_ img
-{
-    width: 95%;
-    padding: 5px;
-    height: 95%;
-    object-fit: contain;
-}*/
 .thumbnail
 {
     padding: 2px;
@@ -77,6 +87,7 @@ body {
     margin-bottom: 0;
 }
 
-footer {
+footer
+{
     margin: 50px 0;
 }

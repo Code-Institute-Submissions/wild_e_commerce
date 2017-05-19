@@ -76,8 +76,7 @@ ROOT_URLCONF = 'wild_e_commerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +109,7 @@ DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 #	    'default': {
 #	        'ENGINE': 'django.db.backends.sqlite3',
 #	        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#       }
+#      }
 #	}
 
 # Password validation
@@ -130,8 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -157,8 +154,8 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')
 
 
 
-
-AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+# see http://developer.yahoo.com/performance/rules.html#expires
+AWS_HEADERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'Cache-Control': 'max-age=94608000',
 }
@@ -195,7 +192,14 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 
 # Email Settings
-DEFAULT_FROM_EMAIL = os.getenv('EMAIL')
+#DEFAULT_FROM_EMAIL = os.getenv('EMAIL')
+
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # The following settings are for dev/debug.
 # Not suitable for production.

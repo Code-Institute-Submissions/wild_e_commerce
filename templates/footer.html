@@ -2,44 +2,41 @@
 {% load gravatar %}
 
 <div class="container">
-<!-- Footer -->
-            <footer class="navbar-default footer">
-                 <div class="container">
-                  <div class=”row”>
-                      <div class="col-md-2">
-                          <address>
-                            <strong>Wild Total Outdoors</strong><br>
-                            1 Friars Mill Road<br>
-                            Mullingar, Co. Westmeath<br>
-                            (044) 930 1133 <br>
-                            <a href="/">Contact Us</a>
-                        </address>
+    <!-- Footer -->
+    <footer class="navbar-default footer">
+         <div class="container">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                      <div class="col-md-6 display">
+                          <h5>Wild Total Outdoors</h5>
+                          <p>1 Friars Mill Road<br>
+                              Mullingar, Co. Westmeath<br>
+                              (044) 930 1133</p>
                       </div>
-                      <div class="col-md-2">
-                          <strong>Navigation</strong><br>
-                          <a href="/"> Contact Us</a><br>
-                          <a href="/"> About Us</a><br>
-                          <br>
-                          <strong>Account</strong><br>
+                      <div class="col-md-3 display">
+                          <h5>Navigation</h5>
+                          <a href="{% url 'contactus' %}"> Contact Us</a><br>
+                          <a href="{% url 'aboutus' %}"> About Us</a><br>
+
+                          <h5>Account</h5>
                           <a href="{% url 'login' %}?next={% url 'profile' %}">Log In</a><br>
                           <a href="{% url 'register' %}">Register</a><br>
                       </div>
-                      <div class="col-md-3">
-                          <strong>Categories</strong><br>
-
+                      <div class="col-md-3 display">
+                          <h5>Categories</h5>
                               {% for category in root_categories %}
-
                                     <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-
                               {% endfor %}
-
+                           <div class="spacer10"></div>
                       </div>
-                      <div class="col-md-5 Deer">
-                          <img src="{% static "images/DeerLogo.png" %}" alt="">
-                      </div>
-
-                  </div>
-                 </div><!-- end container -->
-            </footer>
+                </div>
+                <div class="col-md-6 joe">
+                    <div class="col-md-12 Deer">
+                        <img src="{% static "images/DeerLogo.png" %}" alt="">
+                    </div>
+                </div>
+            </div>
+         </div><!-- end container -->
+    </footer>
 </div>
         <!-- /.container -->

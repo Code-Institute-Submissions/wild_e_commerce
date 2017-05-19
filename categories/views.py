@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category
 from products.models import Product
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 
 
 # Create your views here.
 def root_categories(request):
     categories = Category.objects.filter(parent=None)
-    args = { 'categories': categories, 'subcategories': {}, 'products': {}}
+
+    args = {'categories': categories, 'subcategories': {}, 'products': {}}
     return render(request, 'categories.html', args)
+
 
 def root_categories_context(request):
     categories = Category.objects.filter(parent=None)
@@ -28,19 +29,17 @@ def get_category(request, id):
 
     subcategories = Category.objects.filter(parent=this_category)
 
-    products = this_category.products.all().order_by('name')
+    products = this_category.products.all()
 
-    args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs }
+    args = {'categories': subcategories, 'products': products, 'crumbs': crumbs}
     return render(request, 'categories.html', args)
 
 
-# Create your views here.
 def get_productsdetails(request, id):
     parent = get_object_or_404(Product, pk=id)
     categories = Category.objects.filter(parent=None)
     products = parent.objects.all()
     subcategories = Category.objects.filter(parent=parent)
     args = {'categories': categories, 'subcategories': subcategories, 'products': products}
-    return render(request, 'productdetails.html', {'productinfo':products}, args)
-
+    return render(request, 'productdetails.html', {'productinfo': products}, args)
 

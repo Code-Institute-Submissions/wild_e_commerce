@@ -20,7 +20,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required(login_url="/accounts/login")
 def user_cart(request):
-    cartItems = CartItem.objects.filter(user=request.user)# load the cart items from the database
+    cartItems = CartItem.objects.filter(user=request.user)#load the cart items from the database
     total = 0
     for item in cartItems:
         total += item.product.price# increming the total by the price
@@ -41,7 +41,7 @@ def user_cart(request):
             if customer.paid:
                 messages.success(request, "You have successfully paid")
                 CartItem.objects.filter(user=request.user).delete()
-                return redirect(reverse('products'))
+                return redirect(reverse('index'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -50,7 +50,7 @@ def user_cart(request):
         if len(cartItems) == 0: # if no. of item in the cart is 0. return empty cart httml
             return render(request, 'empty_cart.html')
 
-        form = MakePaymentForm()# if we have something in the cart, we create the makepaymentform
+        form = MakePaymentForm() # if we have something in the cart, we create the makepaymentform
     categories = Category.objects.filter(parent=None)
     args = {'form': form,
             'items': cartItems,
